@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -22,8 +22,19 @@ import * as Config from './SRC/Common/config';
 
 function App() {
   useEffect(() => {
-    SplashScreen.hide();
+    async function prepare() {
+      try {
+        // our api calls will be here.
+        new Promise(resolve => setTimeout(resolve, 500)); // wait for 5 secs
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        SplashScreen.hide();
+      }
+    }
+    prepare();
   });
+
   return (
     <SafeAreaView style={styles.safeAreaStyle}>
       <StatusBar

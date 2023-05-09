@@ -46,16 +46,14 @@ const Form = () => {
       setAuthErrorMessage('Title character length must be in between 0 to 50');
       return;
     } else if (!content?.length) {
-      setAuthErrorMessage(
-        'Content character length must be in between 0 to 50',
-      );
+      setAuthErrorMessage('Content character length must be greater than 0');
       return;
     } else if (!author?.length || author?.length > 20) {
-      setAuthErrorMessage('Author character length must be in between 0 to 50');
+      setAuthErrorMessage('Author character length must be in between 0 to 20');
       return;
     } else if (!seoDescription?.length || seoDescription?.length > 200) {
       setAuthErrorMessage(
-        'Seo Description character length must be in between 0 to 50',
+        'Seo Description character length must be in between 0 to 200',
       );
       return;
     } else if (!imageItem?.path) {
